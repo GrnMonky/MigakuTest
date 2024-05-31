@@ -13,7 +13,7 @@ struct HomeDesignView: View {
        }
     var body: some View {
         ScrollView([.vertical],showsIndicators: false) {
-            Image("navpressdownstate") // Replace with your image name
+            Image("navpressdownstate")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(minWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.height)

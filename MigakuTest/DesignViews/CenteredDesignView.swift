@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct CenteredDesignView: View {
+    var designImage: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Image(designImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: .infinity)
+        }
+        .ignoresSafeArea()
     }
 }
 
 #Preview {
-    CenteredDesignView()
+    CenteredDesignView(designImage: "navTop")
+    
 }

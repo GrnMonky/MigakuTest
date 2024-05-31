@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct WavyDesignView: View {
-    init() {
-          UIScrollView.appearance().bounces = false
-       }
     var body: some View {
-        ScrollView([.vertical],showsIndicators: false) {
-            Image("Vector1203") // Replace with your image name
+        VStack {
+            Image("Vector1203")
                 .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(minWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.height)
-        }.ignoresSafeArea()
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: .infinity)
+            Spacer() // Push the image to the top
+        }
+        .edgesIgnoringSafeArea(.top) // This ensures the image is positioned at the very top
     }
 }
 
