@@ -42,7 +42,7 @@ private struct CustomShape: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         //added a few more pixels to y to prevent being over dragged
-        path.move(to: CGPoint(x: 0, y: -300))
+        path.move(to: CGPoint(x: 0, y: -600))
         path.addLine(to: CGPoint(x: 0, y: 226))
         path.addCurve(to: CGPoint(x: rect.width * 205.23 / 375, y: 201.34),
                       control1: CGPoint(x: rect.width * 86.1614 / 375, y: 223.206),
@@ -51,7 +51,7 @@ private struct CustomShape: Shape {
                       control1: CGPoint(x: rect.width * 256.061 / 375, y: 201.34),
                       control2: CGPoint(x: rect.width * 324.178 / 375, y: 219.252))
         //added a few more pixels to y to prevent being over dragged
-        path.addLine(to: CGPoint(x: rect.width, y: -300))
+        path.addLine(to: CGPoint(x: rect.width, y: -600))
         path.closeSubpath()
         return path
     }

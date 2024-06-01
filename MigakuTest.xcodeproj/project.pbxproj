@@ -24,6 +24,7 @@
 		EBC467C02C078E7400355B28 /* VectorTransButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC467BF2C078E7400355B28 /* VectorTransButton.swift */; };
 		EBC467C52C07FD7900355B28 /* GTMaruBlack.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBC467C42C07FD7900355B28 /* GTMaruBlack.ttf */; };
 		EBC467C72C080D6100355B28 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC467C62C080D6100355B28 /* PopupView.swift */; };
+		EBD807762C0AEC950050B39A /* deckImage.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD807752C0AEC950050B39A /* deckImage.png */; };
 		EBEF7D982C095DC0002B8E7F /* LocalData.json in Resources */ = {isa = PBXBuildFile; fileRef = EBEF7D972C095C3E002B8E7F /* LocalData.json */; };
 		EBEF7D9A2C09686A002B8E7F /* BigHomeBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEF7D992C09686A002B8E7F /* BigHomeBtn.swift */; };
 		EBFAD6AA2C0936CA00B3D3F1 /* UsersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFAD6A92C0936CA00B3D3F1 /* UsersVM.swift */; };
@@ -70,6 +71,7 @@
 		EBC467BF2C078E7400355B28 /* VectorTransButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorTransButton.swift; sourceTree = "<group>"; };
 		EBC467C42C07FD7900355B28 /* GTMaruBlack.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GTMaruBlack.ttf; path = "landon/DesignFiles/gt-maru-cufonfonts/GTMaruBlack.ttf"; sourceTree = SOURCE_ROOT; };
 		EBC467C62C080D6100355B28 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		EBD807752C0AEC950050B39A /* deckImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deckImage.png; path = landon/DesignFiles/deckImage.png; sourceTree = SOURCE_ROOT; };
 		EBEF7D972C095C3E002B8E7F /* LocalData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LocalData.json; sourceTree = "<group>"; };
 		EBEF7D992C09686A002B8E7F /* BigHomeBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigHomeBtn.swift; sourceTree = "<group>"; };
 		EBFAD6A92C0936CA00B3D3F1 /* UsersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersVM.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		EBC467762C06B38400355B28 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				EBD807752C0AEC950050B39A /* deckImage.png */,
 				EBC467772C06B38400355B28 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -328,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBC467C52C07FD7900355B28 /* GTMaruBlack.ttf in Resources */,
+				EBD807762C0AEC950050B39A /* deckImage.png in Resources */,
 				EBC467782C06B38400355B28 /* Preview Assets.xcassets in Resources */,
 				EBC467752C06B38400355B28 /* Assets.xcassets in Resources */,
 				EBEF7D982C095DC0002B8E7F /* LocalData.json in Resources */,

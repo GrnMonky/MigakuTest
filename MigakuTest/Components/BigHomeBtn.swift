@@ -59,13 +59,38 @@ struct BigHomeBtn: ButtonStyle {
 
 #Preview {
     VStack {
+        CenteredDesignView(designImage: "btnNoHeight").opacity(0.8)
         Button(action: {
             print("Button pressed")
         }){
-            Text("Hello")
+            VStack(alignment: .leading, spacing: 10) {
+                // Display user login name
+                Text("Study all \n decks")
+                    .font(.GTMaru(size: 40))
+                    .foregroundColor(.primary)
+                    .multilineTextAlignment(.center)
+                
+                HStack(spacing: 13) {
+                    // Badge for reviews
+                    Text("134 reviews")
+                        .font(.GTMaru(size: 14))
+                        .foregroundColor(.white)
+                        .padding(8)
+                        .background(Color.green)
+                        .cornerRadius(20)
+                    
+                    // Badge for new cards
+                    Text("18 new")
+                        .font(.GTMaru(size: 14))
+                        .foregroundColor(.white)
+                        .padding(8)
+                        .background(Color.blue)
+                        .cornerRadius(20)
+                }.frame(width: .infinity, alignment: .center)
+            }
         }
         .buttonStyle(BigHomeBtn())
-        .frame(width: 260, height: 175)
+        .frame(width: 310, height: 200).offset(x: -35)
         CenteredDesignView(designImage: "studyAllDecks").opacity(0.8)
     }
 }

@@ -128,7 +128,7 @@ struct VectorTransitionButtonStyle: ButtonStyle {
 
 #Preview {
     VStack {
-        CenteredDesignView(designImage: "goButtonUp").opacity(0.8).frame(width:  65, height: 65)
+        CenteredDesignView(designImage: "goButton").opacity(0.8).frame(width:  65, height: 65)
         Button(action: {
             print("Button pressed")
         }){
