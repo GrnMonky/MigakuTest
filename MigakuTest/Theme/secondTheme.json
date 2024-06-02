@@ -1,0 +1,17 @@
+{
+  "primaryColor": "#FFFFFF",
+  "secondaryColor": "#FFA361",
+  "backgroundColor": "#F3F3F3",
+  "fontName": "Arial",
+  "fontSize": 14,
+  "white": "#FFFFFF",
+  "lightPurple": "#EDE3FF",
+  "lightOrange": "#FFA361",
+  "veryLightGray": "#F3F3F3",
+  "pink": "#FE6285",
+  "veryLightWhite": "#FEFEFE",
+  "orange": "#EDE3FF",
+  "darkPink": "#FE4670",
+  "veryLightPurple": "#ECE2FE",
+  "lightBlue": "#DFF4FF"
+}

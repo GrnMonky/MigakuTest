@@ -27,6 +27,14 @@ import SwiftUI
  </svg>
  */
 
+// Define the VectorViewTheme protocol
+protocol VectorViewTheme: ObservableObject {
+    var mainPathGradientColors: [Color] { get }
+    var circleGradientColors: [Color] { get }
+    var strokeColor: Color { get }
+    var arrowColor: Color { get }
+}
+
 // Define the shape for the main path
 struct MainPathShape: Shape {
     func path(in rect: CGRect) -> Path {
@@ -68,16 +76,17 @@ struct ArrowPathShape: Shape {
     }
 }
 
-struct VectorView: View {
+struct VectorView<Theme: VectorViewTheme>: View {
     var pressed: Bool
+    @EnvironmentObject var theme: Theme
+    
     var body: some View {
         ZStack {
             // Main path
-            
             MainPathShape()
                 .fill(
                     LinearGradient(
-                        gradient: Gradient(colors: [Color.orange, Color.red]),
+                        gradient: Gradient(colors: theme.mainPathGradientColors),
                         startPoint: .top,
                         endPoint: .bottom
                     )
@@ -85,7 +94,7 @@ struct VectorView: View {
                 .frame(width: 65, height: 65)
             
             MainPathShape()
-                .stroke(Color.black, lineWidth: 2)
+                .stroke(theme.strokeColor, lineWidth: 2)
                 .frame(width: 65, height: 65)
             
             ZStack {
@@ -93,7 +102,7 @@ struct VectorView: View {
                 CircleShape()
                     .fill(
                         LinearGradient(
-                            gradient: Gradient(colors: [Color.orange, Color.red]),
+                            gradient: Gradient(colors: theme.circleGradientColors),
                             startPoint: .top,
                             endPoint: .bottom
                         )
@@ -101,12 +110,12 @@ struct VectorView: View {
                     .frame(width: 65, height: 65)
                 
                 CircleShape()
-                    .stroke(Color.black, lineWidth: 2)
+                    .stroke(theme.strokeColor, lineWidth: 2)
                     .frame(width: 65, height: 65)
                 
                 // Arrow path
                 ArrowPathShape()
-                    .fill(Color.white)
+                    .fill(theme.arrowColor)
                     .frame(width: 65, height: 65)
             }
             .offset(x: pressed ? -6 : 0, y: pressed ? 6 : 0)
@@ -115,11 +124,10 @@ struct VectorView: View {
     }
 }
 
-struct VectorTransitionButtonStyle: ButtonStyle {
+struct VectorTransitionButtonStyle<Theme: VectorViewTheme>: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         ZStack {
-            
-            VectorView(pressed: configuration.isPressed)
+            VectorView<Theme>(pressed: configuration.isPressed)
             configuration.label
         }
         .animation(.easeInOut(duration: 0), value: configuration.isPressed)
@@ -128,12 +136,13 @@ struct VectorTransitionButtonStyle: ButtonStyle {
 
 #Preview {
     VStack {
-        CenteredDesignView(designImage: "goButton").opacity(0.8).frame(width:  65, height: 65)
+        CenteredDesignView(designImage: "goButton").opacity(0.8).frame(width: 65, height: 65)
         Button(action: {
             print("Button pressed")
         }){
         }
-        .buttonStyle(VectorTransitionButtonStyle())
+        .buttonStyle(VectorTransitionButtonStyle<Theme>())
+        .environmentObject(Theme())
         CenteredDesignView(designImage: "goButtonDown").opacity(0.8).frame(width: 65, height: 65)
     }
 }

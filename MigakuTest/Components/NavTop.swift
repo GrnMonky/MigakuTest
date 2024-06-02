@@ -7,9 +7,21 @@
 
 import SwiftUI
 
-struct NavTop: View {
+// Define the NavTopTheme protocol
+protocol NavTopTheme: ObservableObject {
+    var wordCountFont: Font { get }
+    var wordLabelFont: Font { get }
+    var wordCountTextColor: Color { get }
+    var wordLabelTextColor: Color { get }
+    var backgroundGradientColors: [Color] { get }
+    var shadowColor: Color { get }
+}
+
+// Define the NavTop view
+struct NavTop<Theme: NavTopTheme>: View {
     var wordCount: Int
     var leftAction: (() -> Void)?  // Add a closure for the button action
+    @EnvironmentObject var theme: Theme
 
     var body: some View {
         HStack {
@@ -29,23 +41,23 @@ struct NavTop: View {
                     .resizable()
                     .frame(width: 17, height: 17)
                 Text(String(wordCount))
-                    .font(.GTMaru(size: 20))
-                    .foregroundColor(.white)
+                    .font(theme.wordCountFont)
+                    .foregroundColor(theme.wordCountTextColor)
                 Text("words")
-                    .font(.GTMaru(size: 12))
-                    .foregroundColor(.white)
+                    .font(theme.wordLabelFont)
+                    .foregroundColor(theme.wordLabelTextColor)
             }
             .frame(alignment: .center)
             .padding(.vertical, 9)
             .padding(.horizontal, 15)
             .background(LinearGradient(
-                gradient: Gradient(colors: [Color(hex: "#FF9345"), Color(hex: "#FE4670")]),
+                gradient: Gradient(colors: theme.backgroundGradientColors),
                 startPoint: .top,
                 endPoint: .bottom
             ))
             .cornerRadius(25)
             .offset(CGSize(width: 0, height: -10.0))
-            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+            .shadow(color: theme.shadowColor, radius: 10, x: 0, y: 5)
             
             Spacer()
             
@@ -59,7 +71,8 @@ struct NavTop: View {
 #Preview {
     VStack {
         Spacer()
-        NavTop(wordCount: 5483)
+        NavTop<Theme>(wordCount: 5483)
+            .environmentObject(Theme())
         CenteredDesignView(designImage: "navTop").opacity(0.8)
         Spacer()
     }

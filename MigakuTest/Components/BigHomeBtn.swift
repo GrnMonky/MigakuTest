@@ -7,8 +7,18 @@
 
 import SwiftUI
 
-// ContentView to display the button
-struct BigHomeBtn: ButtonStyle {
+// Define the BigHomeBtnTheme protocol
+protocol BigHomeBtnTheme: ObservableObject {
+    var pathFillColor: Color { get }
+    var pathStrokeColor: Color { get }
+    var rectangleFillColor: Color { get }
+    var rectangleStrokeColor: Color { get }
+}
+
+// Define the BigHomeBtn button style
+struct BigHomeBtn<Theme: BigHomeBtnTheme>: ButtonStyle {
+    @EnvironmentObject var theme: Theme
+    
     func makeBody(configuration: Configuration) -> some View {
         GeometryReader { geometry in
             ZStack {
@@ -22,8 +32,8 @@ struct BigHomeBtn: ButtonStyle {
                             path.addLine(to: CGPoint(x: 0, y: geometry.size.height * 0.05))
                             path.closeSubpath()
                         }
-                        .fill(Color(red: 0.83, green: 0.95, blue: 1.0))
-                        .stroke(Color(red: 0.0, green: 0.0, blue: 0.35), lineWidth: 2)
+                        .fill(theme.pathFillColor)
+                        .stroke(theme.pathStrokeColor, lineWidth: 2)
                         .transition(.scale(scale: 0.90, anchor: .bottomLeading))
                         
                         Path { path in
@@ -33,17 +43,15 @@ struct BigHomeBtn: ButtonStyle {
                             path.addLine(to: CGPoint(x: 0, y: geometry.size.height))
                             path.closeSubpath()
                         }
-                        .fill(Color(red: 0.83, green: 0.95, blue: 1.0))
-                        .stroke(Color(red: 0.0, green: 0.0, blue: 0.35), lineWidth: 1)
+                        .fill(theme.pathFillColor)
+                        .stroke(theme.pathStrokeColor, lineWidth: 1)
                         .transition(.scale(scale: 0.95, anchor: .bottomLeading))
                     }
-//                    .transition(.scale(scale: 0.95, anchor: .bottomLeading))
-//                    .transition(.scale(scale: 0.90, anchor: .bottomLeading))
                 }
                 
                 Rectangle()
-                    .stroke(Color(red: 0.0, green: 0.0, blue: 0.35), lineWidth: 2)
-                    .background(Rectangle().fill(Color(red: 0.93, green: 0.89, blue: 1.0)))
+                    .stroke(theme.rectangleStrokeColor, lineWidth: 2)
+                    .background(Rectangle().fill(theme.rectangleFillColor))
                     .overlay(configuration.label)
                     .frame(width: geometry.size.width * 0.94, height: geometry.size.height * 0.94)
                     .offset(x: configuration.isPressed ? 0 : geometry.size.width * 0.027,
@@ -51,10 +59,8 @@ struct BigHomeBtn: ButtonStyle {
                     .scaleEffect(x: 1.0, y: configuration.isPressed ? 0.95 : 1.0, anchor: .bottom)
             }
         }
-//        .aspectRatio(1.5, contentMode: .fit)
         .animation(.easeInOut(duration: 0.2), value: configuration.isPressed)
     }
-
 }
 
 #Preview {
@@ -66,14 +72,14 @@ struct BigHomeBtn: ButtonStyle {
             VStack(alignment: .leading, spacing: 10) {
                 // Display user login name
                 Text("Study all \n decks")
-                    .font(.GTMaru(size: 40))
+                    .font(.system(size: 40))
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                 
                 HStack(spacing: 13) {
                     // Badge for reviews
                     Text("134 reviews")
-                        .font(.GTMaru(size: 14))
+                        .font(.system(size: 14))
                         .foregroundColor(.white)
                         .padding(8)
                         .background(Color.green)
@@ -81,7 +87,7 @@ struct BigHomeBtn: ButtonStyle {
                     
                     // Badge for new cards
                     Text("18 new")
-                        .font(.GTMaru(size: 14))
+                        .font(.system(size: 14))
                         .foregroundColor(.white)
                         .padding(8)
                         .background(Color.blue)
@@ -89,7 +95,8 @@ struct BigHomeBtn: ButtonStyle {
                 }.frame(width: .infinity, alignment: .center)
             }
         }
-        .buttonStyle(BigHomeBtn())
+        .buttonStyle(BigHomeBtn<Theme>())
+        .environmentObject(Theme())
         .frame(width: 310, height: 200).offset(x: -35)
         CenteredDesignView(designImage: "studyAllDecks").opacity(0.8)
     }

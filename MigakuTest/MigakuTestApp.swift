@@ -11,7 +11,7 @@ import SwiftUI
 struct MigakuTestApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
-        }
+            HomeView<Theme>()
+        }.environmentObject(Theme(themeFileName: "theme"))
     }
 }

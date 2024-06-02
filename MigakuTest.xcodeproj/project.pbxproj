@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EBBA42612C0C22C100AE78C9 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = EBBA42602C0C228400AE78C9 /* theme.json */; };
+		EBBA42652C0C237D00AE78C9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBA42642C0C237C00AE78C9 /* Theme.swift */; };
+		EBBA42672C0C25B400AE78C9 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBA42662C0C25B400AE78C9 /* ThemeProtocol.swift */; };
+		EBBA426A2C0C3DE200AE78C9 /* ThemeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBA42692C0C3DE200AE78C9 /* ThemeExtensions.swift */; };
+		EBBA426C2C0C7B5A00AE78C9 /* secondTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = EBBA426B2C0C7B5A00AE78C9 /* secondTheme.json */; };
 		EBC467712C06B38200355B28 /* MigakuTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC467702C06B38200355B28 /* MigakuTestApp.swift */; };
 		EBC467732C06B38200355B28 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC467722C06B38200355B28 /* HomeView.swift */; };
 		EBC467752C06B38400355B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBC467742C06B38400355B28 /* Assets.xcassets */; };
@@ -51,6 +56,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EBBA42602C0C228400AE78C9 /* theme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = theme.json; sourceTree = "<group>"; };
+		EBBA42642C0C237C00AE78C9 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = MigakuTest/Utilities/Theme/Theme.swift; sourceTree = SOURCE_ROOT; };
+		EBBA42662C0C25B400AE78C9 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
+		EBBA42692C0C3DE200AE78C9 /* ThemeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeExtensions.swift; sourceTree = "<group>"; };
+		EBBA426B2C0C7B5A00AE78C9 /* secondTheme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = secondTheme.json; sourceTree = "<group>"; };
+		EBBA426D2C0C7E0600AE78C9 /* ProtocolGenerator.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ProtocolGenerator.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EBC4676D2C06B38200355B28 /* MigakuTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MigakuTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBC467702C06B38200355B28 /* MigakuTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigakuTestApp.swift; sourceTree = "<group>"; };
 		EBC467722C06B38200355B28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -69,7 +80,7 @@
 		EBC467AF2C06EA4800355B28 /* NavTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavTop.swift; sourceTree = "<group>"; };
 		EBC467B92C073FE900355B28 /* CenteredDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredDesignView.swift; sourceTree = "<group>"; };
 		EBC467BF2C078E7400355B28 /* VectorTransButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorTransButton.swift; sourceTree = "<group>"; };
-		EBC467C42C07FD7900355B28 /* GTMaruBlack.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GTMaruBlack.ttf; path = "landon/DesignFiles/gt-maru-cufonfonts/GTMaruBlack.ttf"; sourceTree = SOURCE_ROOT; };
+		EBC467C42C07FD7900355B28 /* GTMaruBlack.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GTMaruBlack.ttf; path = MigakuTest/Theme/fonts/GTMaruBlack.ttf; sourceTree = SOURCE_ROOT; };
 		EBC467C62C080D6100355B28 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		EBD807752C0AEC950050B39A /* deckImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deckImage.png; path = landon/DesignFiles/deckImage.png; sourceTree = SOURCE_ROOT; };
 		EBEF7D972C095C3E002B8E7F /* LocalData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LocalData.json; sourceTree = "<group>"; };
@@ -105,12 +116,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EBA13ED02C0B51010028AF29 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EBC467C42C07FD7900355B28 /* GTMaruBlack.ttf */,
+			);
+			name = fonts;
+			path = MigakuTest/Theme/fonts;
+			sourceTree = SOURCE_ROOT;
+		};
+		EBBA42512C0C16A900AE78C9 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				EBA13ED02C0B51010028AF29 /* fonts */,
+				EBBA42642C0C237C00AE78C9 /* Theme.swift */,
+				EBBA42692C0C3DE200AE78C9 /* ThemeExtensions.swift */,
+				EBBA42602C0C228400AE78C9 /* theme.json */,
+				EBBA426B2C0C7B5A00AE78C9 /* secondTheme.json */,
+			);
+			name = Theme;
+			path = ../Theme;
+			sourceTree = "<group>";
+		};
+		EBBA42682C0C2A9600AE78C9 /* GeneratedProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				EBBA42662C0C25B400AE78C9 /* ThemeProtocol.swift */,
+			);
+			path = GeneratedProtocols;
+			sourceTree = "<group>";
+		};
+		EBBA426E2C0C7E0600AE78C9 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				EBBA426D2C0C7E0600AE78C9 /* ProtocolGenerator.playground */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		EBC467642C06B38200355B28 = {
 			isa = PBXGroup;
 			children = (
 				EBC4676F2C06B38200355B28 /* MigakuTest */,
 				EBC467802C06B38400355B28 /* MigakuTestTests */,
 				EBC4678A2C06B38400355B28 /* MigakuTestUITests */,
+				EBBA426E2C0C7E0600AE78C9 /* Tools */,
 				EBC4676E2C06B38200355B28 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -129,12 +179,10 @@
 			isa = PBXGroup;
 			children = (
 				EBFAD6A82C0936A300B3D3F1 /* ViewModels */,
-				EBC467B12C071B9A00355B28 /* fonts */,
 				EBC467AA2C06E36F00355B28 /* Utilities */,
 				EBC467A32C06BD2E00355B28 /* Components */,
-				EBC467702C06B38200355B28 /* MigakuTestApp.swift */,
 				EBC467722C06B38200355B28 /* HomeView.swift */,
-				EBC467C62C080D6100355B28 /* PopupView.swift */,
+				EBC467702C06B38200355B28 /* MigakuTestApp.swift */,
 				EBC467742C06B38400355B28 /* Assets.xcassets */,
 				EBC467A02C06BBBC00355B28 /* DesignViews */,
 				EBC467762C06B38400355B28 /* Preview Content */,
@@ -181,6 +229,7 @@
 		EBC467A32C06BD2E00355B28 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EBC467C62C080D6100355B28 /* PopupView.swift */,
 				EBC467A42C06BD4700355B28 /* NavView.swift */,
 				EBC467A62C06C20900355B28 /* WavyView.swift */,
 				EBC467AF2C06EA4800355B28 /* NavTop.swift */,
@@ -194,18 +243,12 @@
 		EBC467AA2C06E36F00355B28 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EBBA42682C0C2A9600AE78C9 /* GeneratedProtocols */,
+				EBBA42512C0C16A900AE78C9 /* Theme */,
 				EBEF7D962C095246002B8E7F /* Networking */,
 				EBC467AB2C06E38A00355B28 /* Extensions.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		EBC467B12C071B9A00355B28 /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				EBC467C42C07FD7900355B28 /* GTMaruBlack.ttf */,
-			);
-			path = fonts;
 			sourceTree = "<group>";
 		};
 		EBEF7D962C095246002B8E7F /* Networking */ = {
@@ -331,8 +374,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBC467C52C07FD7900355B28 /* GTMaruBlack.ttf in Resources */,
+				EBBA426C2C0C7B5A00AE78C9 /* secondTheme.json in Resources */,
 				EBD807762C0AEC950050B39A /* deckImage.png in Resources */,
 				EBC467782C06B38400355B28 /* Preview Assets.xcassets in Resources */,
+				EBBA42612C0C22C100AE78C9 /* theme.json in Resources */,
 				EBC467752C06B38400355B28 /* Assets.xcassets in Resources */,
 				EBEF7D982C095DC0002B8E7F /* LocalData.json in Resources */,
 			);
@@ -369,10 +414,13 @@
 				EBFAD6B02C0937D100B3D3F1 /* UserCell.swift in Sources */,
 				EBFAD6AA2C0936CA00B3D3F1 /* UsersVM.swift in Sources */,
 				EBC467732C06B38200355B28 /* HomeView.swift in Sources */,
+				EBBA426A2C0C3DE200AE78C9 /* ThemeExtensions.swift in Sources */,
+				EBBA42652C0C237D00AE78C9 /* Theme.swift in Sources */,
 				EBEF7D9A2C09686A002B8E7F /* BigHomeBtn.swift in Sources */,
 				EBC467A72C06C20900355B28 /* WavyView.swift in Sources */,
 				EBC467BA2C073FE900355B28 /* CenteredDesignView.swift in Sources */,
 				EBC467A52C06BD4700355B28 /* NavView.swift in Sources */,
+				EBBA42672C0C25B400AE78C9 /* ThemeProtocol.swift in Sources */,
 				EBC467C72C080D6100355B28 /* PopupView.swift in Sources */,
 				EBC467712C06B38200355B28 /* MigakuTestApp.swift in Sources */,
 			);
@@ -546,8 +594,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -577,8 +624,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

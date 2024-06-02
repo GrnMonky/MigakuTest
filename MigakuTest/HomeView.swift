@@ -7,18 +7,28 @@
 
 import SwiftUI
 
-struct HomeView: View {
+// Define the HomeViewTheme protocol
+protocol HomeViewTheme: Theme, ObservableObject {
+    var headerBackgroundColor: Color { get }
+    var todayFont: Font { get }
+    var todayTextColor: Color { get }
+}
+
+// Define the HomeView view
+struct HomeView<Theme: HomeViewTheme>: View {
     @State private var showPopup = false
     @State private var isAnimating = false
     var viewModel: HomeVM = HomeVM()
+    
+    @EnvironmentObject var theme: Theme
     
     var body: some View {
         ZStack {
             ScrollView([.vertical], showsIndicators: false) {
                 ZStack {
-                    WavyHeader()
+                    WavyHeader<Theme>()
                     
-                    NavTop(wordCount: 2483) {
+                    NavTop<Theme>(wordCount: 2483) {
                         withAnimation(.interpolatingSpring(stiffness: 70, damping: 10)) {
                             showPopup.toggle()
                             
@@ -34,24 +44,22 @@ struct HomeView: View {
                     
                     //Lazy VStack for infinite scrolling
                     LazyVStack(spacing: 25) {
-                        
                         ForEach(viewModel.users) { user in
-                            UserCell(user: user)
+                            UserCell<Theme>(user: user)
                                 .frame(width: 360)
-                                .offset(y:-11)
+                                .offset(y: -11)
                                 .task {
                                     // Load more users when reaching the end of the list
                                     if viewModel.shouldLoadMoreUsers(user) {
                                         await viewModel.loadMoreUsers()
                                     }
                                 }
-                            
                         }
-                    }.padding(.bottom, 500).offset(y:400)
+                    }.padding(.bottom, 500).offset(y: 400)
                     
                     Button(action: {
-                        print("Button pressed")
-                    }){
+//                        print("Button pressed")
+                    }) {
                         VStack(alignment: .center, spacing: 10) {
                             // Display user login name
                             Text("Study all \n decks")
@@ -66,7 +74,7 @@ struct HomeView: View {
                                     .font(.GTMaru(size: 12))
                                     .foregroundColor(.white)
                                     .padding(5)
-                                    .background(Color.green)
+                                    .background(theme.reviewBadgeBackgroundColor)
                                     .cornerRadius(20)
                                 
                                 // Badge for new cards
@@ -74,29 +82,31 @@ struct HomeView: View {
                                     .font(.GTMaru(size: 12))
                                     .foregroundColor(.white)
                                     .padding(5)
-                                    .background(Color.blue)
+                                    .background(theme.newCardBadgeBackgroundColor)
                                     .cornerRadius(20).offset(x: -2)
                             }
                         }
                     }
-                    .buttonStyle(BigHomeBtn())
+                    .buttonStyle(BigHomeBtn<Theme>())
                     .frame(width: 260, height: 175)
-                    .position(x: 190, y: 225)
+                    .position(x: UIScreen.main.bounds.width / 2 - 5, y: 225)
                     
                     Button(action: {
-                        print("Button pressed")
+//                        print("Button pressed")
                     }) {
                     }
-                    .buttonStyle(VectorTransitionButtonStyle())
-                    .position(x: 330, y: 227)
+                    .buttonStyle(VectorTransitionButtonStyle<Theme>())
+                    .position(x: UIScreen.main.bounds.width / 2 + 131, y: 227)
                     
-                    Text("Today").font(.GTMaru(size: 20)).position(x: UIScreen.main.bounds.width / 2, y: 350)
-                    
+                    Text("Today")
+                        .font(theme.todayFont)
+                        .foregroundColor(theme.todayTextColor)
+                        .position(x: UIScreen.main.bounds.width / 2, y: 350)
                 }
             }
             .ignoresSafeArea()
             
-            NavView()
+            NavView<Theme>()
                 .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height - 120)
             
             if showPopup {
@@ -111,7 +121,7 @@ struct HomeView: View {
                 .buttonStyle(PlainButtonStyle())
                 .zIndex(1)
                 
-                PopupView()
+                PopupView<Theme>()
                     .frame(width: 450)
                     .transition(.move(edge: .leading))
                     .animation(.interpolatingSpring(stiffness: 70, damping: 10), value: showPopup)
@@ -119,8 +129,8 @@ struct HomeView: View {
                     .zIndex(2).disabled(isAnimating)
             }
         }
-        .background(Color.init(hex: "#EDE3FF"))
-        .task() {
+        .background(theme.headerBackgroundColor)
+        .task {
             if viewModel.users.isEmpty {
                 viewModel.loadInitialUsers()
             }
@@ -130,7 +140,7 @@ struct HomeView: View {
 
 #Preview {
     ZStack {
-        HomeView()
-        //        HomeDesignView().opacity(0.3)
+        HomeView<Theme>().environmentObject(Theme())
+//        HomeDesignView().opacity(0.3)
     }
 }

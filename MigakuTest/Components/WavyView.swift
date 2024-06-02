@@ -38,10 +38,18 @@ private struct CustomShape: Shape {
 }
 **/
 
+// Define the WavyHeaderTheme protocol
+protocol WavyHeaderTheme: ObservableObject {
+    var gradientColors: [Color] { get }
+    var gradientCenter: UnitPoint { get }
+    var gradientStartRadius: CGFloat { get }
+    var gradientEndRadiusMultiplier: CGFloat { get }
+}
+
+// Define the CustomShape struct
 private struct CustomShape: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        //added a few more pixels to y to prevent being over dragged
         path.move(to: CGPoint(x: 0, y: -600))
         path.addLine(to: CGPoint(x: 0, y: 226))
         path.addCurve(to: CGPoint(x: rect.width * 205.23 / 375, y: 201.34),
@@ -50,14 +58,16 @@ private struct CustomShape: Shape {
         path.addCurve(to: CGPoint(x: rect.width, y: 219.252),
                       control1: CGPoint(x: rect.width * 256.061 / 375, y: 201.34),
                       control2: CGPoint(x: rect.width * 324.178 / 375, y: 219.252))
-        //added a few more pixels to y to prevent being over dragged
         path.addLine(to: CGPoint(x: rect.width, y: -600))
         path.closeSubpath()
         return path
     }
 }
 
-struct WavyHeader: View {
+// Define the WavyHeader view
+struct WavyHeader<Theme: WavyHeaderTheme>: View {
+    @EnvironmentObject var theme: Theme
+    
     var body: some View {
         GeometryReader { geometry in
             let screenWidth = geometry.size.width
@@ -65,10 +75,10 @@ struct WavyHeader: View {
                 CustomShape()
                     .fill(
                         RadialGradient(
-                            gradient: Gradient(colors: [Color(hex: "#FF9D29"), Color(hex: "#FFE700")]),
-                            center: .init(x: 178.384 / 375, y: 206.033 / 500),
-                            startRadius: 0,
-                            endRadius: sqrt(pow(208.067 / 375 * screenWidth, 2) + pow(334.768 / 500 * screenWidth, 2))
+                            gradient: Gradient(colors: theme.gradientColors),
+                            center: theme.gradientCenter,
+                            startRadius: theme.gradientStartRadius,
+                            endRadius: theme.gradientEndRadiusMultiplier * sqrt(pow(208.067 / 375 * screenWidth, 2) + pow(334.768 / 500 * screenWidth, 2))
                         )
                     )
                     .frame(width: screenWidth, height: 500)
@@ -81,9 +91,11 @@ struct WavyHeader: View {
 
 #Preview {
     ZStack {
-        ScrollView([.vertical],showsIndicators: false) {
-            WavyHeader()
-        }.ignoresSafeArea()
+        ScrollView([.vertical], showsIndicators: false) {
+            WavyHeader<Theme>()
+                .environmentObject(Theme())
+        }
+        .ignoresSafeArea()
         WavyDesignView().opacity(0.7)
     }
 }

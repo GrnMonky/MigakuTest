@@ -24,36 +24,55 @@ extension View {
     }
 }
 
-struct PopupButtonStyle: ButtonStyle {
+// Define the PopupTheme protocol
+protocol PopupTheme: ObservableObject {
+    var buttonFont: Font { get }
+    var buttonForegroundColor: Color { get }
+    var buttonBackgroundColor: Color { get }
+    var buttonPressedBackgroundColor: Color { get }
+    var popupBackgroundGradient: LinearGradient { get }
+    var textBackgroundColor: Color { get }
+    var textBackgroundOpacity: Double { get }
+    var capsuleFillColor: Color { get }
+    var capsuleFillOpacity: Double { get }
+}
+
+// Define the PopupButtonStyle button style
+struct PopupButtonStyle<Theme: PopupTheme>: ButtonStyle {
     var image: String
+    @EnvironmentObject var theme: Theme
     
     func makeBody(configuration: Configuration) -> some View {
         let content = HStack(spacing: 15) {
             Image(image)
                 .renderingMode(.template)
             configuration.label
-                .font(.GTMaru(size: 20))
+                .font(theme.buttonFont)
         }
-            .padding(.vertical, 15)
-            .padding(.horizontal, 15)
-            .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.vertical, 15)
+        .padding(.horizontal, 15)
+        .frame(maxWidth: .infinity, alignment: .leading)
         
         return content
-            .foregroundColor(configuration.isPressed ? .clear : .white)
-            .background(configuration.isPressed ? Color.white : Color.white.opacity(0.3))
+            .foregroundColor(configuration.isPressed ? .clear : theme.buttonForegroundColor)
+            .background(configuration.isPressed ? theme.buttonPressedBackgroundColor : theme.buttonBackgroundColor)
             .reverseMask(alignment: .leading) {
                 if configuration.isPressed {
                     content
                 }
-            }.cornerRadius(30)
+            }
+            .cornerRadius(30)
     }
 }
 
-struct PopupView: View {
+// Define the PopupView view
+struct PopupView<Theme: PopupTheme>: View {
+    @EnvironmentObject var theme: Theme
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 30)
-                .fill(LinearGradient(gradient: Gradient(colors: [Color.orange, Color.red]), startPoint: .top, endPoint: .bottom))
+                .fill(theme.popupBackgroundGradient)
                 .frame(maxWidth: .infinity, maxHeight: 500)
             
             VStack {
@@ -63,17 +82,17 @@ struct PopupView: View {
                         .frame(width: 90, height: 90)
                         .clipShape(Circle())
                     Text("9264 words")
-                        .font(.GTMaru(size: 12))
-                        .foregroundColor(.white)
+                        .font(theme.buttonFont)
+                        .foregroundColor(theme.buttonForegroundColor)
                         .padding(5)
                         .background(
                             Capsule()
-                                .fill(Color.white.opacity(0.15))
+                                .fill(theme.capsuleFillColor.opacity(theme.capsuleFillOpacity))
                         )
                 }
                 .frame(width: 280, height: 140)
                 .padding()
-                .background(Color.white.opacity(0.3))
+                .background(theme.textBackgroundColor.opacity(theme.textBackgroundOpacity))
                 .cornerRadius(32)
                 
                 VStack(spacing: 20) {
@@ -82,28 +101,28 @@ struct PopupView: View {
                     }) {
                         Text("Study")
                     }
-                    .buttonStyle(PopupButtonStyle(image: "bookSVG"))
+                    .buttonStyle(PopupButtonStyle<Theme>(image: "bookSVG"))
                     
                     Button(action: {
                         // Action for Dictionary
                     }) {
                         Text("Dictionary")
                     }
-                    .buttonStyle(PopupButtonStyle(image: "bookStackSVG"))
+                    .buttonStyle(PopupButtonStyle<Theme>(image: "bookStackSVG"))
                     
                     Button(action: {
                         // Action for Give feedback
                     }) {
                         Text("Give feedback")
                     }
-                    .buttonStyle(PopupButtonStyle(image: "feedback"))
+                    .buttonStyle(PopupButtonStyle<Theme>(image: "feedback"))
                     
                     Button(action: {
                         // Action for Settings
                     }) {
                         Text("Settings")
                     }
-                    .buttonStyle(PopupButtonStyle(image: "gear"))
+                    .buttonStyle(PopupButtonStyle<Theme>(image: "gear"))
                 }
                 .frame(maxWidth: 300)
                 .frame(height: 300)
@@ -112,13 +131,15 @@ struct PopupView: View {
             .frame(maxWidth: .infinity)
         }
         .padding(50)
-        .frame(maxWidth: .infinity) // This will make the entire view take up the available width
+        .frame(maxWidth: .infinity)
     }
 }
 
 #Preview {
     ZStack {
-        PopupView().frame(width: 450)
-        //        CenteredDesignView(designImage: "popup").frame(width: 350).opacity(0.3)
+        PopupView<Theme>()
+            .environmentObject(Theme())
+            .frame(width: 450)
+        // CenteredDesignView(designImage: "popup").frame(width: 350).opacity(0.3)
     }
 }

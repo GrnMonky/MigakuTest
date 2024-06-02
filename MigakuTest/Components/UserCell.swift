@@ -7,9 +7,23 @@
 
 import SwiftUI
 
-struct UserCell: View {
+// Define the UserCellThemeProtocol
+protocol UserCellTheme: ObservableObject {
+    var primaryFont: Font { get }
+    var badgeFont: Font { get }
+    var primaryTextColor: Color { get }
+    var badgeTextColor: Color { get }
+    var reviewBadgeBackgroundColor: Color { get }
+    var newCardBadgeBackgroundColor: Color { get }
+    var cellBackgroundColor: Color { get }
+    var shadowColor: Color { get }
+}
+
+// Define the UserCell struct
+struct UserCell<Theme: UserCellTheme>: View {
     
     let user: GitHub.User
+    @EnvironmentObject var theme: Theme
     
     var body: some View {
         HStack(spacing: 25) {
@@ -29,24 +43,24 @@ struct UserCell: View {
             VStack(alignment: .leading, spacing: 10) {
                 // Display user login name
                 Text(user.login)
-                    .font(.GTMaru(size: 15))
-                    .foregroundColor(.primary)
+                    .font(theme.primaryFont)
+                    .foregroundColor(theme.primaryTextColor)
                 
                 HStack(spacing: 13) {
                     // Badge for reviews
                     Text("23 reviews")
-                        .font(.GTMaru(size: 12))
-                        .foregroundColor(.white)
+                        .font(theme.badgeFont)
+                        .foregroundColor(theme.badgeTextColor)
                         .padding(5)
-                        .background(Color.green)
+                        .background(theme.reviewBadgeBackgroundColor)
                         .cornerRadius(20)
                     
                     // Badge for new cards
                     Text("8 new cards")
-                        .font(.GTMaru(size: 12))
-                        .foregroundColor(.white)
+                        .font(theme.badgeFont)
+                        .foregroundColor(theme.badgeTextColor)
                         .padding(5)
-                        .background(Color.blue)
+                        .background(theme.newCardBadgeBackgroundColor)
                         .cornerRadius(20)
                 }
             }
@@ -55,14 +69,18 @@ struct UserCell: View {
         }
         .padding(.vertical, 15) // Vertical padding
         .padding(.horizontal, 15)
-        .background(Color.white)
+        .background(theme.cellBackgroundColor)
         .cornerRadius(10)
-        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+        .shadow(color: theme.shadowColor, radius: 5, x: 0, y: 2)
     }
 }
+
 #Preview {
     VStack {
-        UserCell(user: GitHub.ListUser(login: "Kanji deck", avatarURL: Bundle.main.url(forResource: "deckImage", withExtension: "png")!.absoluteString, id: 1)).frame(width: 360)
+        UserCell<Theme>(user: GitHub.ListUser(login: "Kanji deck", avatarURL: Bundle.main.url(forResource: "deckImage", withExtension: "png")!.absoluteString, id: 1))
+            .frame(width: 360)
+            .environmentObject(Theme())
         CenteredDesignView(designImage: "card").opacity(0.6).offset(y: 10)
     }
 }
+
