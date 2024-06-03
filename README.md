@@ -10,3 +10,9 @@ Known Issues to Fix:
 
 Decisions I Made:
 - I assumed that the inverted appearance of the top "Study" button in the popup is the when pressed state. So, I made the press animation on all buttons match the top button. It also uses an inverse mask instead of a gradient, unlike the design.
+
+Issues found in this submission:
+- Thickness of lines in the study box differs
+- Slide-in animation is slower
+- Button presses look different
+- The "a"s of the font look different, as a variant of the font has to be used
