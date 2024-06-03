@@ -38,9 +38,10 @@ final class MigakuTestTests: XCTestCase {
         
         Task.init {
             do {
-                let users = try await GitHub().getUsers().async()
+                var users: [Migaku.CardModel]
+                (users, _, _) = try await Networking.getCards(location: "https://api.github.com/users").async()
                 XCTAssertNotNil(users, "Users array should not be nil")
-                XCTAssertTrue(users.data.count > 0, "There should be at least one user")
+                XCTAssertTrue(users.count > 0, "There should be at least one user")
             } catch {
                 XCTFail("Error fetching users: \(error)")
             }

@@ -42,18 +42,22 @@ func generateSwiftProtocol(_ jsonFilePath: String, _ protocolName: String, _ out
     protocolString += "}"
     
     // Write the generated protocol to a file
-    do {
-        try protocolString.write(to: URL(fileURLWithPath: outputFilePath), atomically: true, encoding: .utf8)
-        print("Protocol written to \(outputFilePath)")
-    } catch {
-        print("Failed to write protocol to file: \(error)")
-    }
+//    do {
+//        try protocolString.write(to: URL(fileURLWithPath: outputFilePath), atomically: true, encoding: .utf8)
+//        print("Protocol written to \(outputFilePath)")
+//    } catch {
+//        print("Failed to write protocol to file: \(error)")
+//    }
+    
+    print(protocolString)
 }
 
 
 // Example usage
 //locations needs to be hard coded because playgrounds are sanboxed
-let input = "<Your File Structure>/MigakuTest/MigakuTest/Theme/theme.json"
+//let input = "<Your File Structure>/MigakuTest/MigakuTest/Theme/theme.json"
+
+let input = Bundle.main.url(forResource: "input", withExtension: "json")!.absoluteString
 let protocolName = "ThemeProtocol"
 //locations needs to be hard coded because playgrounds are sanboxed
 let output = "<Your File Structure>/MigakuTest/Utilities/GeneratedProtocols/ThemeProtocol.swift"

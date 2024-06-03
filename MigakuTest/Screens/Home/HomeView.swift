@@ -18,7 +18,8 @@ protocol HomeViewTheme: Theme, ObservableObject {
 struct HomeView<Theme: HomeViewTheme>: View {
     @State private var showPopup = false
     @State private var isAnimating = false
-    var viewModel: HomeVM = HomeVM()
+    @State private var showGithub = false
+    var viewModel = HomeVM()
     
     @EnvironmentObject var theme: Theme
     
@@ -44,13 +45,13 @@ struct HomeView<Theme: HomeViewTheme>: View {
                     
                     //Lazy VStack for infinite scrolling
                     LazyVStack(spacing: 25) {
-                        ForEach(viewModel.users) { user in
-                            UserCell<Theme>(user: user)
+                        ForEach(viewModel.users) { card in
+                            CardCell<Theme>(card: card)
                                 .frame(width: 360)
                                 .offset(y: -11)
                                 .task {
                                     // Load more users when reaching the end of the list
-                                    if viewModel.shouldLoadMoreUsers(user) {
+                                    if viewModel.shouldLoadMoreUsers(card) {
                                         await viewModel.loadMoreUsers()
                                     }
                                 }
@@ -92,7 +93,8 @@ struct HomeView<Theme: HomeViewTheme>: View {
                     .position(x: UIScreen.main.bounds.width / 2 - 5, y: 225)
                     
                     Button(action: {
-//                        print("Button pressed")
+                        showGithub.toggle()
+                        viewModel.dataLocation = showGithub ? .github : .local
                     }) {
                     }
                     .buttonStyle(VectorTransitionButtonStyle<Theme>())
@@ -106,8 +108,15 @@ struct HomeView<Theme: HomeViewTheme>: View {
             }
             .ignoresSafeArea()
             
-            NavView<Theme>()
-                .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height - 120)
+            if UIDevice.current.orientation.isLandscape {
+                
+                NavView<Theme>()
+                    .position(x: UIScreen.main.bounds.width - 200, y: UIScreen.main.bounds.height - 100)
+            } else {
+                
+                NavView<Theme>()
+                    .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height - 120)
+            }
             
             if showPopup {
                 Button(action: {

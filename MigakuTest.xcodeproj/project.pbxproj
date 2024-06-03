@@ -12,6 +12,12 @@
 		EBBA42672C0C25B400AE78C9 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBA42662C0C25B400AE78C9 /* ThemeProtocol.swift */; };
 		EBBA426A2C0C3DE200AE78C9 /* ThemeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBA42692C0C3DE200AE78C9 /* ThemeExtensions.swift */; };
 		EBBA426C2C0C7B5A00AE78C9 /* secondTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = EBBA426B2C0C7B5A00AE78C9 /* secondTheme.json */; };
+		EBBA42702C0D508200AE78C9 /* localDataFigma.json in Resources */ = {isa = PBXBuildFile; fileRef = EBBA426F2C0D508200AE78C9 /* localDataFigma.json */; };
+		EBBA42722C0D54A100AE78C9 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBA42712C0D54A100AE78C9 /* CardModel.swift */; };
+		EBBA42822C0D95E600AE78C9 /* deckJapan.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBA427E2C0D95E600AE78C9 /* deckJapan.png */; };
+		EBBA42832C0D95E600AE78C9 /* deckSushi.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBA427F2C0D95E600AE78C9 /* deckSushi.png */; };
+		EBBA42842C0D95E600AE78C9 /* deckFlower.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBA42802C0D95E600AE78C9 /* deckFlower.png */; };
+		EBBA42852C0D95E600AE78C9 /* deckKanji.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBA42812C0D95E600AE78C9 /* deckKanji.png */; };
 		EBC467712C06B38200355B28 /* MigakuTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC467702C06B38200355B28 /* MigakuTestApp.swift */; };
 		EBC467732C06B38200355B28 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC467722C06B38200355B28 /* HomeView.swift */; };
 		EBC467752C06B38400355B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBC467742C06B38400355B28 /* Assets.xcassets */; };
@@ -29,13 +35,11 @@
 		EBC467C02C078E7400355B28 /* VectorTransButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC467BF2C078E7400355B28 /* VectorTransButton.swift */; };
 		EBC467C52C07FD7900355B28 /* GTMaruBlack.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBC467C42C07FD7900355B28 /* GTMaruBlack.ttf */; };
 		EBC467C72C080D6100355B28 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC467C62C080D6100355B28 /* PopupView.swift */; };
-		EBD807762C0AEC950050B39A /* deckImage.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD807752C0AEC950050B39A /* deckImage.png */; };
-		EBEF7D982C095DC0002B8E7F /* LocalData.json in Resources */ = {isa = PBXBuildFile; fileRef = EBEF7D972C095C3E002B8E7F /* LocalData.json */; };
+		EBEF7D982C095DC0002B8E7F /* localData.json in Resources */ = {isa = PBXBuildFile; fileRef = EBEF7D972C095C3E002B8E7F /* localData.json */; };
 		EBEF7D9A2C09686A002B8E7F /* BigHomeBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEF7D992C09686A002B8E7F /* BigHomeBtn.swift */; };
-		EBFAD6AA2C0936CA00B3D3F1 /* UsersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFAD6A92C0936CA00B3D3F1 /* UsersVM.swift */; };
-		EBFAD6AD2C09373E00B3D3F1 /* GitHubModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFAD6AC2C09373E00B3D3F1 /* GitHubModels.swift */; };
-		EBFAD6B02C0937D100B3D3F1 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFAD6AF2C0937D100B3D3F1 /* UserCell.swift */; };
-		EBFAD6B22C09381800B3D3F1 /* GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFAD6B12C09381800B3D3F1 /* GitHub.swift */; };
+		EBFAD6AA2C0936CA00B3D3F1 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFAD6A92C0936CA00B3D3F1 /* HomeVM.swift */; };
+		EBFAD6B02C0937D100B3D3F1 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFAD6AF2C0937D100B3D3F1 /* CardCell.swift */; };
+		EBFAD6B22C09381800B3D3F1 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFAD6B12C09381800B3D3F1 /* Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +66,12 @@
 		EBBA42692C0C3DE200AE78C9 /* ThemeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeExtensions.swift; sourceTree = "<group>"; };
 		EBBA426B2C0C7B5A00AE78C9 /* secondTheme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = secondTheme.json; sourceTree = "<group>"; };
 		EBBA426D2C0C7E0600AE78C9 /* ProtocolGenerator.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ProtocolGenerator.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		EBBA426F2C0D508200AE78C9 /* localDataFigma.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = localDataFigma.json; sourceTree = "<group>"; };
+		EBBA42712C0D54A100AE78C9 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
+		EBBA427E2C0D95E600AE78C9 /* deckJapan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deckJapan.png; path = landon/DesignFiles/deckJapan.png; sourceTree = SOURCE_ROOT; };
+		EBBA427F2C0D95E600AE78C9 /* deckSushi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deckSushi.png; path = landon/DesignFiles/deckSushi.png; sourceTree = SOURCE_ROOT; };
+		EBBA42802C0D95E600AE78C9 /* deckFlower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deckFlower.png; path = landon/DesignFiles/deckFlower.png; sourceTree = SOURCE_ROOT; };
+		EBBA42812C0D95E600AE78C9 /* deckKanji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deckKanji.png; path = landon/DesignFiles/deckKanji.png; sourceTree = SOURCE_ROOT; };
 		EBC4676D2C06B38200355B28 /* MigakuTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MigakuTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBC467702C06B38200355B28 /* MigakuTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigakuTestApp.swift; sourceTree = "<group>"; };
 		EBC467722C06B38200355B28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -82,13 +92,11 @@
 		EBC467BF2C078E7400355B28 /* VectorTransButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorTransButton.swift; sourceTree = "<group>"; };
 		EBC467C42C07FD7900355B28 /* GTMaruBlack.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GTMaruBlack.ttf; path = MigakuTest/Theme/fonts/GTMaruBlack.ttf; sourceTree = SOURCE_ROOT; };
 		EBC467C62C080D6100355B28 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
-		EBD807752C0AEC950050B39A /* deckImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deckImage.png; path = landon/DesignFiles/deckImage.png; sourceTree = SOURCE_ROOT; };
-		EBEF7D972C095C3E002B8E7F /* LocalData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LocalData.json; sourceTree = "<group>"; };
+		EBEF7D972C095C3E002B8E7F /* localData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = localData.json; sourceTree = "<group>"; };
 		EBEF7D992C09686A002B8E7F /* BigHomeBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigHomeBtn.swift; sourceTree = "<group>"; };
-		EBFAD6A92C0936CA00B3D3F1 /* UsersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersVM.swift; sourceTree = "<group>"; };
-		EBFAD6AC2C09373E00B3D3F1 /* GitHubModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubModels.swift; sourceTree = "<group>"; };
-		EBFAD6AF2C0937D100B3D3F1 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
-		EBFAD6B12C09381800B3D3F1 /* GitHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHub.swift; sourceTree = "<group>"; };
+		EBFAD6A92C0936CA00B3D3F1 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		EBFAD6AF2C0937D100B3D3F1 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		EBFAD6B12C09381800B3D3F1 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +162,35 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		EBBA42752C0D85AC00AE78C9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EBC467722C06B38200355B28 /* HomeView.swift */,
+				EBFAD6A92C0936CA00B3D3F1 /* HomeVM.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		EBBA42762C0D8B3400AE78C9 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				EBBA42752C0D85AC00AE78C9 /* Home */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		EBBA42772C0D8DEE00AE78C9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EBBA42802C0D95E600AE78C9 /* deckFlower.png */,
+				EBBA427E2C0D95E600AE78C9 /* deckJapan.png */,
+				EBBA42812C0D95E600AE78C9 /* deckKanji.png */,
+				EBBA427F2C0D95E600AE78C9 /* deckSushi.png */,
+				EBC467742C06B38400355B28 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		EBC467642C06B38200355B28 = {
 			isa = PBXGroup;
 			children = (
@@ -178,12 +215,12 @@
 		EBC4676F2C06B38200355B28 /* MigakuTest */ = {
 			isa = PBXGroup;
 			children = (
-				EBFAD6A82C0936A300B3D3F1 /* ViewModels */,
+				EBBA42762C0D8B3400AE78C9 /* Screens */,
+				EBFAD6A82C0936A300B3D3F1 /* Models */,
 				EBC467AA2C06E36F00355B28 /* Utilities */,
 				EBC467A32C06BD2E00355B28 /* Components */,
-				EBC467722C06B38200355B28 /* HomeView.swift */,
 				EBC467702C06B38200355B28 /* MigakuTestApp.swift */,
-				EBC467742C06B38400355B28 /* Assets.xcassets */,
+				EBBA42772C0D8DEE00AE78C9 /* Resources */,
 				EBC467A02C06BBBC00355B28 /* DesignViews */,
 				EBC467762C06B38400355B28 /* Preview Content */,
 			);
@@ -193,7 +230,6 @@
 		EBC467762C06B38400355B28 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				EBD807752C0AEC950050B39A /* deckImage.png */,
 				EBC467772C06B38400355B28 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -234,7 +270,7 @@
 				EBC467A62C06C20900355B28 /* WavyView.swift */,
 				EBC467AF2C06EA4800355B28 /* NavTop.swift */,
 				EBC467BF2C078E7400355B28 /* VectorTransButton.swift */,
-				EBFAD6AF2C0937D100B3D3F1 /* UserCell.swift */,
+				EBFAD6AF2C0937D100B3D3F1 /* CardCell.swift */,
 				EBEF7D992C09686A002B8E7F /* BigHomeBtn.swift */,
 			);
 			path = Components;
@@ -254,19 +290,19 @@
 		EBEF7D962C095246002B8E7F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				EBFAD6AC2C09373E00B3D3F1 /* GitHubModels.swift */,
-				EBFAD6B12C09381800B3D3F1 /* GitHub.swift */,
-				EBEF7D972C095C3E002B8E7F /* LocalData.json */,
+				EBFAD6B12C09381800B3D3F1 /* Networking.swift */,
+				EBEF7D972C095C3E002B8E7F /* localData.json */,
+				EBBA426F2C0D508200AE78C9 /* localDataFigma.json */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		EBFAD6A82C0936A300B3D3F1 /* ViewModels */ = {
+		EBFAD6A82C0936A300B3D3F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EBFAD6A92C0936CA00B3D3F1 /* UsersVM.swift */,
+				EBBA42712C0D54A100AE78C9 /* CardModel.swift */,
 			);
-			path = ViewModels;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,12 +410,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBC467C52C07FD7900355B28 /* GTMaruBlack.ttf in Resources */,
+				EBBA42822C0D95E600AE78C9 /* deckJapan.png in Resources */,
+				EBBA42702C0D508200AE78C9 /* localDataFigma.json in Resources */,
+				EBBA42842C0D95E600AE78C9 /* deckFlower.png in Resources */,
+				EBBA42852C0D95E600AE78C9 /* deckKanji.png in Resources */,
 				EBBA426C2C0C7B5A00AE78C9 /* secondTheme.json in Resources */,
-				EBD807762C0AEC950050B39A /* deckImage.png in Resources */,
 				EBC467782C06B38400355B28 /* Preview Assets.xcassets in Resources */,
+				EBBA42832C0D95E600AE78C9 /* deckSushi.png in Resources */,
 				EBBA42612C0C22C100AE78C9 /* theme.json in Resources */,
 				EBC467752C06B38400355B28 /* Assets.xcassets in Resources */,
-				EBEF7D982C095DC0002B8E7F /* LocalData.json in Resources */,
+				EBEF7D982C095DC0002B8E7F /* localData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,15 +444,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBFAD6B22C09381800B3D3F1 /* GitHub.swift in Sources */,
+				EBFAD6B22C09381800B3D3F1 /* Networking.swift in Sources */,
 				EBC4679D2C06B5E200355B28 /* HomeDesignView.swift in Sources */,
 				EBC467C02C078E7400355B28 /* VectorTransButton.swift in Sources */,
 				EBC467A92C06C24700355B28 /* WavyDesignView.swift in Sources */,
-				EBFAD6AD2C09373E00B3D3F1 /* GitHubModels.swift in Sources */,
 				EBC467B02C06EA4800355B28 /* NavTop.swift in Sources */,
 				EBC467AC2C06E38A00355B28 /* Extensions.swift in Sources */,
-				EBFAD6B02C0937D100B3D3F1 /* UserCell.swift in Sources */,
-				EBFAD6AA2C0936CA00B3D3F1 /* UsersVM.swift in Sources */,
+				EBFAD6B02C0937D100B3D3F1 /* CardCell.swift in Sources */,
+				EBFAD6AA2C0936CA00B3D3F1 /* HomeVM.swift in Sources */,
 				EBC467732C06B38200355B28 /* HomeView.swift in Sources */,
 				EBBA426A2C0C3DE200AE78C9 /* ThemeExtensions.swift in Sources */,
 				EBBA42652C0C237D00AE78C9 /* Theme.swift in Sources */,
@@ -420,6 +459,7 @@
 				EBC467A72C06C20900355B28 /* WavyView.swift in Sources */,
 				EBC467BA2C073FE900355B28 /* CenteredDesignView.swift in Sources */,
 				EBC467A52C06BD4700355B28 /* NavView.swift in Sources */,
+				EBBA42722C0D54A100AE78C9 /* CardModel.swift in Sources */,
 				EBBA42672C0C25B400AE78C9 /* ThemeProtocol.swift in Sources */,
 				EBC467C72C080D6100355B28 /* PopupView.swift in Sources */,
 				EBC467712C06B38200355B28 /* MigakuTestApp.swift in Sources */,
@@ -594,7 +634,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -624,7 +666,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

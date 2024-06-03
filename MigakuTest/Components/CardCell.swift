@@ -20,15 +20,15 @@ protocol UserCellTheme: ObservableObject {
 }
 
 // Define the UserCell struct
-struct UserCell<Theme: UserCellTheme>: View {
+struct CardCell<Theme: UserCellTheme>: View {
     
-    let user: GitHub.User
+    let card: Migaku.CardModel
     @EnvironmentObject var theme: Theme
     
     var body: some View {
         HStack(spacing: 25) {
             // Display user avatar asynchronously
-            AsyncImage(url: URL(string: user.avatarURL ?? "")) { image in
+            AsyncImage(url: URL(string: card.cardImageUrl ?? "")) { image in
                 image.resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 80, height: 80)
@@ -42,33 +42,42 @@ struct UserCell<Theme: UserCellTheme>: View {
             
             VStack(alignment: .leading, spacing: 10) {
                 // Display user login name
-                Text(user.login)
+                Text(card.title)
                     .font(theme.primaryFont)
                     .foregroundColor(theme.primaryTextColor)
                 
-                HStack(spacing: 13) {
+                HStack(spacing: 5) {
                     // Badge for reviews
-                    Text("23 reviews")
+                    Text("\(card.reviews ?? 0) reviews")
                         .font(theme.badgeFont)
                         .foregroundColor(theme.badgeTextColor)
-                        .padding(5)
+                        .padding(.vertical, 5)
+                        .padding(.horizontal, 8)
                         .background(theme.reviewBadgeBackgroundColor)
                         .cornerRadius(20)
+                        .lineLimit(1)
                     
                     // Badge for new cards
-                    Text("8 new cards")
+                    Text("\(card.amount ?? 0) \(card.amountLabel ?? "new cards")")
                         .font(theme.badgeFont)
                         .foregroundColor(theme.badgeTextColor)
-                        .padding(5)
-                        .background(theme.newCardBadgeBackgroundColor)
+                        .padding(.vertical, 5)
+                        .padding(.horizontal, 8)
+                        .background(card.amountLabelColor == nil ? theme.newCardBadgeBackgroundColor : Color(hex: card.amountLabelColor!))
                         .cornerRadius(20)
+                        .lineLimit(1)
+                }
+                
+                if let message = card.message, !message.isEmpty {
+                    Text(message).foregroundColor(.red).font(.system(size: 14))
                 }
             }
             
             Spacer()
         }
         .padding(.vertical, 15) // Vertical padding
-        .padding(.horizontal, 15)
+        .padding(.leading, 15)
+        .padding(.trailing, 0)
         .background(theme.cellBackgroundColor)
         .cornerRadius(10)
         .shadow(color: theme.shadowColor, radius: 5, x: 0, y: 2)
@@ -77,7 +86,7 @@ struct UserCell<Theme: UserCellTheme>: View {
 
 #Preview {
     VStack {
-        UserCell<Theme>(user: GitHub.ListUser(login: "Kanji deck", avatarURL: Bundle.main.url(forResource: "deckImage", withExtension: "png")!.absoluteString, id: 1))
+        CardCell<Theme>(card: Migaku.MockCard())
             .frame(width: 360)
             .environmentObject(Theme())
         CenteredDesignView(designImage: "card").opacity(0.6).offset(y: 10)

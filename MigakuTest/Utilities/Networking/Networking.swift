@@ -13,15 +13,15 @@ fileprivate let token = "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"
 // Constants
 //fileprivate let GitHubUrl = { return "https://api.github.com/users" }
 
-fileprivate let GitHubUrl = {
+fileprivate let DefaultURL = {
     if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
-        return Bundle.main.url(forResource: "LocalData", withExtension: "json")!.absoluteString
+        return Bundle.main.url(forResource: "localDataFigma", withExtension: "json")!.absoluteString
     } else {
         return "https://api.github.com/users"
     }
 }
 
-fileprivate struct Networking {
+struct Networking {
     
     // Enum for Networking errors
     enum NetworkingError: Error {
@@ -90,10 +90,10 @@ fileprivate struct Networking {
 }
 
 // Extension for GitHub API related functions
-extension GitHub {
+extension Networking {
     
     // Function to get list of users from GitHub API
-    func getUsers(next: String? = nil) -> AnyPublisher<(data: [GitHub.ListUser], nextPageLink: URL?, prevPageLink: URL?), Error> {
-        return Networking.fromURLSession(next ?? GitHubUrl(), type: [GitHub.ListUser].self)
+    static func getCards(next: String? = nil, location: String?) -> AnyPublisher<(data: [Migaku.CardModel], nextPageLink: URL?, prevPageLink: URL?), Error> {
+        return Networking.fromURLSession(next ?? location ?? DefaultURL(), type: [Migaku.CardModel].self)
     }
 }

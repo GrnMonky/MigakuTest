@@ -9,13 +9,33 @@ import Foundation
 
 @Observable
 class HomeVM {
+    
+    enum locations {
+        case github
+        case local
+    }
+    
     // MARK: - Properties
+    var dataLocation: locations = .local {
+        didSet {
+            loadInitialUsers()
+        }
+    }
+    
+    private var getLocation: String? {
+        switch dataLocation {
+        case .github:
+            return "https://api.github.com/users"
+        case .local:
+            return Bundle.main.url(forResource: "localDataFigma", withExtension: "json")!.absoluteString
+        }
+    }
     
     // State variable to hold the list of GitHub users
-    var users: [GitHub.ListUser] = []
+    var users: [Migaku.CardModel] = []
     
     // State variable to hold the URL for the next page
-    var nextPageLink: URL? = nil
+    private var nextPageLink: URL? = nil
     
     // State variable to control the presentation of the alert
     var showAlert = false
@@ -32,7 +52,7 @@ class HomeVM {
     // MARK: - Helper Functions
     
     // Function to check if more users should be loaded based on the currently displayed user
-    func shouldLoadMoreUsers(_ user: GitHub.ListUser) -> Bool {
+    func shouldLoadMoreUsers(_ user: Migaku.CardModel) -> Bool {
         guard let lastUser = users.last else {
             return false
         }
@@ -50,10 +70,10 @@ class HomeVM {
         
         // Attempt to fetch more GitHub users asynchronously
         do {
-            var newUsers: [GitHub.ListUser]?
+            var newUsers: [Migaku.CardModel]?
             var newNextPageLink: URL?
             // Fetch new users, next page link, ToDo: Make use of previous page link
-            (newUsers, newNextPageLink, _) = try await GitHub().getUsers(next: nextLink.absoluteString).async()
+            (newUsers, newNextPageLink, _) = try await Networking.getCards(next: nextLink.absoluteString, location: getLocation).async()
             
             if let newUsers = newUsers {
                 users.append(contentsOf: newUsers)
@@ -69,12 +89,10 @@ class HomeVM {
     }
     
     func loadInitialUsers() {
-        // Fetch initial GitHub users asynchronously when the view appears
+        // Fetch initial users asynchronously when the view appears
         Task {
-            do{
-                let (initialUsers, initialNextPageLink, _) = try await GitHub().getUsers().async()
-                users = initialUsers
-                nextPageLink = initialNextPageLink
+            do {
+                (users, nextPageLink, _) = try await Networking.getCards(location: getLocation).async()
             } catch {
                 // Handle any errors that occur during search
                 errorMessage = error.localizedDescription
@@ -82,5 +100,4 @@ class HomeVM {
             }
         }
     }
-    
 }

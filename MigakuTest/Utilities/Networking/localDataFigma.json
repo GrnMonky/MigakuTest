@@ -1,0 +1,40 @@
+[
+    {
+        "title": "Kanji Deck",
+        "id": 1,
+        "reviews": 23,
+        "amount": 8,
+        "amountLabel": "new cards",
+        "amountLabelColor": "#3C91FF",
+        "card_image": "deckImage"
+    },
+    {
+        "title": "Japanese Native Flower Species",
+        "id": 2,
+        "reviews": 6,
+        "amount": 5,
+        "amountLabel": "new cards",
+        "amountLabelColor": "#3C91FF",
+        "card_image": "deckFlower"
+    },
+    {
+        "title": "Sushi Types",
+        "id": 3,
+        "reviews": 6,
+        "amount": 2,
+        "amountLabel": "overdue",
+        "amountLabelColor": "#FE4670",
+        "card_image": "deckSushi"
+    },
+    {
+        "title": "Japanese geography",
+        "id": 4,
+        "reviews": 6,
+        "amount": 0,
+        "amountLabel": "new",
+        "amountLabelColor": "#FE4670",
+        "message": "Make 5 New Cards",
+        "card_image": "deckJapan"
+    }
+]
+
