@@ -24,7 +24,7 @@ struct Migaku {
         let amountLabelColor: String?
         let message: String?
         
-        //I could also do this by writing init(from decoder: Decoder)
+        //This could also be done by writing a custom init(from decoder: Decoder)
         private let login: String?
         private let avatarURL: String?
         private let cardTitle: String?
@@ -32,10 +32,9 @@ struct Migaku {
         
         // Coding keys for decoding
         private enum CodingKeys: String, CodingKey {
-            case id, reviews, amount, amountLabel, amountLabelColor, message, login
+            case id,reviews,amount,amountLabel,amountLabelColor,message,login,cardImage
             case cardTitle = "title"
             case avatarURL = "avatar_url"
-            case cardImage = "card_image"
         }
     }
     
@@ -50,11 +49,11 @@ struct Migaku {
             "amountLabelColor": "#ff0000",
             "message": "Test message",
             "login": "user123",
-            "card_image": "deckKanji",
+            "cardImage": "deckKanji",
             "title": "Kanji deck"
         }
         """
-
+        
         // Convert JSON string to Data
         guard let jsonData = jsonString.data(using: .utf8) else {
             fatalError("Invalid JSON string")

@@ -6,7 +6,7 @@
         "amount": 8,
         "amountLabel": "new cards",
         "amountLabelColor": "#3C91FF",
-        "card_image": "deckImage"
+        "cardImage": "deckKanji"
     },
     {
         "title": "Japanese Native Flower Species",
@@ -15,7 +15,7 @@
         "amount": 5,
         "amountLabel": "new cards",
         "amountLabelColor": "#3C91FF",
-        "card_image": "deckFlower"
+        "cardImage": "deckFlower"
     },
     {
         "title": "Sushi Types",
@@ -24,7 +24,7 @@
         "amount": 2,
         "amountLabel": "overdue",
         "amountLabelColor": "#FE4670",
-        "card_image": "deckSushi"
+        "cardImage": "deckSushi"
     },
     {
         "title": "Japanese geography",
@@ -34,7 +34,7 @@
         "amountLabel": "new",
         "amountLabelColor": "#FE4670",
         "message": "Make 5 New Cards",
-        "card_image": "deckJapan"
+        "cardImage": "deckJapan"
     }
 ]
 
