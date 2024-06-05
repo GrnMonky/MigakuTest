@@ -39,11 +39,13 @@ struct MorphingShapeTop: Shape {
         let width = size.width
         let height = size.height
         
-        path.move(to: CGPoint(x: width * flexSmallAdjustment, y: height * flexOffsetAdjustment))
-        path.addLine(to: CGPoint(x: width * flexSmallAdjustment, y: height * flexLargeAdjustment))
-        path.addLine(to: CGPoint(x: 0, y: height))
-        path.addLine(to: CGPoint(x: 0, y: height * fixedSmallAdjustment))
-        path.closeSubpath()
+//        if (flexSmallAdjustment >= 0.01) {
+            path.move(to: CGPoint(x: width * flexSmallAdjustment, y: height * flexOffsetAdjustment))
+            path.addLine(to: CGPoint(x: width * flexSmallAdjustment, y: height * flexLargeAdjustment))
+            path.addLine(to: CGPoint(x: 0, y: height))
+            path.addLine(to: CGPoint(x: 0, y: height * fixedSmallAdjustment))
+            path.closeSubpath()
+//        }
         
         return path
     }
@@ -73,21 +75,24 @@ struct MorphingShapeBottom: Shape {
         var path = Path()
         let width = size.width
         let height = size.height
-        
-        // Move to the starting point at the top-left corner
-        path.move(to: CGPoint(x: width * flexSmallAdjustment, y: height * flexLargeAdjustment - 4))
-        // Draw line to the top-right point
-        path.addLine(to: CGPoint(x: width - (flexOffsetAdjustment * width), y: height * flexLargeAdjustment))
-        // Draw line to the bottom-right point
-        path.addLine(to: CGPoint(x: width * fixedLargeAdjustment, y: height))
-        // Draw line to the bottom-left point
-        path.addLine(to: CGPoint(x: 0, y: height))
-        // Close the path (back to the starting point)
-        path.closeSubpath()
+            // Move to the starting point at the top-left corner
+            path.move(to: CGPoint(x: width * flexSmallAdjustment + 5, y: (height * flexLargeAdjustment) - 1))
+            // Draw line to the top-right point
+        path.addLine(to: CGPoint(x: width + ( width * flexSmallAdjustment), y: height * flexLargeAdjustment))
+            // Draw line to the bottom-right point
+            path.addLine(to: CGPoint(x: width, y: height))
+            // Draw line to the bottom-left point
+            path.addLine(to: CGPoint(x: 0 + 5, y: height))
+            // Close the path (back to the starting point)
+            path.closeSubpath()
         
         return path
     }
 }
+
+fileprivate let flexSmallAdjustmentFirst: CGFloat = 0.05/2
+fileprivate let flexLargeAdjustmentFirst: CGFloat = 0.95 + 0.05/2
+fileprivate let flexOffsetAdjustmentFirst : CGFloat = 0.0
 
 // Define the BigHomeBtn button style
 struct BigHomeBtn<Theme: BigHomeBtnTheme>: ButtonStyle {
@@ -100,22 +105,22 @@ struct BigHomeBtn<Theme: BigHomeBtnTheme>: ButtonStyle {
     //    //Make go to 0.05
     //    @State var flexOffsetAdjustment = 0.0//0.01//0.0
     
-    @State private var flexSmallAdjustment: CGFloat = 0.05
-    @State private var flexLargeAdjustment: CGFloat = 0.95
-    @State private var flexOffsetAdjustment: CGFloat = 0.0
+    @State private var flexSmallAdjustment: CGFloat = flexSmallAdjustmentFirst
+    @State private var flexLargeAdjustment: CGFloat = flexLargeAdjustmentFirst
+    @State private var flexOffsetAdjustment: CGFloat = flexOffsetAdjustmentFirst
     
     private var flexSmallAdjustmentLast: CGFloat = 0
     private var flexLargeAdjustmentLast: CGFloat = 1
     private var flexOffsetAdjustmentLast: CGFloat = 0.05
     
-    private var animation = Animation.easeOut(duration: 0.3)
+    private var animation = Animation.easeInOut(duration: 0.3)
     
     func makeBody(configuration: Configuration) -> some View {
         GeometryReader { geometry in
             
             ZStack {
                 MorphingShapeTop(
-                    flexSmallAdjustment: flexSmallAdjustment,
+                    flexSmallAdjustment: flexSmallAdjustment + 0.01,
                     flexLargeAdjustment: flexLargeAdjustment,
                     flexOffsetAdjustment: flexOffsetAdjustment,
                     size: geometry.size
@@ -125,9 +130,9 @@ struct BigHomeBtn<Theme: BigHomeBtnTheme>: ButtonStyle {
             }
             .onChange(of: configuration.isPressed) {
                 withAnimation(animation) { // Adjust duration and curve if needed
-                    flexSmallAdjustment = configuration.isPressed ? flexSmallAdjustmentLast : 0.05
-                    flexLargeAdjustment = configuration.isPressed ? flexLargeAdjustmentLast : 0.95
-                    flexOffsetAdjustment = configuration.isPressed ? flexOffsetAdjustmentLast : 0.0
+                    flexSmallAdjustment = configuration.isPressed ? flexSmallAdjustmentLast : flexSmallAdjustmentFirst
+                    flexLargeAdjustment = configuration.isPressed ? flexLargeAdjustmentLast : flexLargeAdjustmentFirst
+                    flexOffsetAdjustment = configuration.isPressed ? flexOffsetAdjustmentLast : flexOffsetAdjustmentFirst
                 }
             }
             
@@ -140,23 +145,23 @@ struct BigHomeBtn<Theme: BigHomeBtnTheme>: ButtonStyle {
                 )
                 .stroke(theme.pathStrokeColor, lineWidth: 5)
                 .fill(theme.pathFillColor)
-                .offset(x: 5)
+                .offset(x: -1, y: 1)
             }
             .onChange(of: configuration.isPressed) {
                 withAnimation(animation) { // Adjust duration and curve if needed
-                    flexSmallAdjustment = configuration.isPressed ? flexSmallAdjustmentLast : 0.05
-                    flexLargeAdjustment = configuration.isPressed ? flexLargeAdjustmentLast : 0.95
-                    flexOffsetAdjustment = configuration.isPressed ? flexOffsetAdjustmentLast : 0.0
+                    flexSmallAdjustment = configuration.isPressed ? flexSmallAdjustmentLast : flexSmallAdjustmentFirst
+                    flexLargeAdjustment = configuration.isPressed ? flexLargeAdjustmentLast : flexLargeAdjustmentFirst
+                    flexOffsetAdjustment = configuration.isPressed ? flexOffsetAdjustmentLast : flexOffsetAdjustmentFirst
                 }
             }
             
             Rectangle()
-                .stroke(theme.rectangleStrokeColor, lineWidth: 3)
+                .stroke(theme.rectangleStrokeColor, lineWidth: 2)
                 .background(Rectangle().fill(theme.rectangleFillColor))
                 .overlay(configuration.label)
-                .frame(width: geometry.size.width - 5, height: geometry.size.height * 0.95)
-                            .offset(x: configuration.isPressed ? 0 : geometry.size.width * 0.05 + 2,
-                                    y: configuration.isPressed ? geometry.size.height * 0.05 : -2)
+                .frame(width: geometry.size.width + 2, height: geometry.size.height * 0.98)
+                            .offset(x: configuration.isPressed ? 0 : geometry.size.width * 0.05 - 2,
+                                    y: configuration.isPressed ? geometry.size.height * 0.05 - 5 : -3)
         }.animation(animation, value: configuration.isPressed)
     }
 }
@@ -170,7 +175,7 @@ struct BigHomeBtn<Theme: BigHomeBtnTheme>: ButtonStyle {
             VStack(alignment: .leading, spacing: 10) {
                 // Display user login name
                 Text("Study all \n decks")
-                    .font(.system(size: 40))
+                    .font(.GTMaru(size: 40))
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                 

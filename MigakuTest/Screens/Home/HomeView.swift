@@ -91,8 +91,8 @@ struct HomeView<Theme: HomeViewTheme>: View {
                         }
                     }
                     .buttonStyle(BigHomeBtn<Theme>())
-                    .frame(width: 250, height: 175)
-                    .position(x: UIScreen.main.bounds.width / 2 - 7, y: 225)
+                    .frame(width: 250, height: 169)
+                    .position(x: UIScreen.main.bounds.width / 2 - 10, y: 225)
                     
                     Button(action: {
                         showGithub.toggle()
