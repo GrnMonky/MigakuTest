@@ -21,6 +21,8 @@ struct HomeView<Theme: HomeViewTheme>: View {
     @State private var showGithub = false
     var viewModel = HomeVM()
     
+    private var animation = Animation.interpolatingSpring(stiffness: 600 * 2, damping: 15 * 3)
+    
     @EnvironmentObject var theme: Theme
     
     var body: some View {
@@ -30,7 +32,7 @@ struct HomeView<Theme: HomeViewTheme>: View {
                     WavyHeader<Theme>()
                     
                     NavTop<Theme>(wordCount: 2483) {
-                        withAnimation(.interpolatingSpring(stiffness: 70, damping: 10)) {
+                        withAnimation(animation) {
                             showPopup.toggle()
                             
                             isAnimating = true
@@ -89,8 +91,8 @@ struct HomeView<Theme: HomeViewTheme>: View {
                         }
                     }
                     .buttonStyle(BigHomeBtn<Theme>())
-                    .frame(width: 260, height: 175)
-                    .position(x: UIScreen.main.bounds.width / 2 - 5, y: 225)
+                    .frame(width: 250, height: 175)
+                    .position(x: UIScreen.main.bounds.width / 2 - 7, y: 225)
                     
                     Button(action: {
                         showGithub.toggle()
@@ -120,8 +122,15 @@ struct HomeView<Theme: HomeViewTheme>: View {
             
             if showPopup {
                 Button(action: {
-                    withAnimation {
-                        showPopup = false
+                    withAnimation(animation) {
+                        showPopup.toggle()
+                        
+                        isAnimating = true
+                        
+                        // Disable interactions during the animation
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                            isAnimating = false
+                        }
                     }
                 }) {
                     Color.purple.opacity(0.5)
@@ -133,7 +142,6 @@ struct HomeView<Theme: HomeViewTheme>: View {
                 PopupView<Theme>()
                     .frame(width: 450)
                     .transition(.move(edge: .leading))
-                    .animation(.interpolatingSpring(stiffness: 70, damping: 10), value: showPopup)
                     .position(x: UIScreen.main.bounds.width / 2, y: 265)
                     .zIndex(2).disabled(isAnimating)
             }
@@ -150,6 +158,6 @@ struct HomeView<Theme: HomeViewTheme>: View {
 #Preview {
     ZStack {
         HomeView<Theme>().environmentObject(Theme())
-//        HomeDesignView().opacity(0.3)
+        HomeDesignView().opacity(0.3)
     }
 }
