@@ -18,6 +18,7 @@
 		EBBA42832C0D95E600AE78C9 /* deckSushi.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBA427F2C0D95E600AE78C9 /* deckSushi.png */; };
 		EBBA42842C0D95E600AE78C9 /* deckFlower.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBA42802C0D95E600AE78C9 /* deckFlower.png */; };
 		EBBA42852C0D95E600AE78C9 /* deckKanji.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBA42812C0D95E600AE78C9 /* deckKanji.png */; };
+		EBBEA2892C0FED4B00E0F123 /* GT-Maru-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBBEA2882C0FED4B00E0F123 /* GT-Maru-Black.ttf */; };
 		EBC467712C06B38200355B28 /* MigakuTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC467702C06B38200355B28 /* MigakuTestApp.swift */; };
 		EBC467732C06B38200355B28 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC467722C06B38200355B28 /* HomeView.swift */; };
 		EBC467752C06B38400355B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBC467742C06B38400355B28 /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		EBBA427F2C0D95E600AE78C9 /* deckSushi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deckSushi.png; path = landon/DesignFiles/deckSushi.png; sourceTree = SOURCE_ROOT; };
 		EBBA42802C0D95E600AE78C9 /* deckFlower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deckFlower.png; path = landon/DesignFiles/deckFlower.png; sourceTree = SOURCE_ROOT; };
 		EBBA42812C0D95E600AE78C9 /* deckKanji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deckKanji.png; path = landon/DesignFiles/deckKanji.png; sourceTree = SOURCE_ROOT; };
+		EBBEA2882C0FED4B00E0F123 /* GT-Maru-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GT-Maru-Black.ttf"; path = "landon/DesignFiles/GT-Maru-Black.ttf"; sourceTree = SOURCE_ROOT; };
 		EBC4676D2C06B38200355B28 /* MigakuTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MigakuTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBC467702C06B38200355B28 /* MigakuTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigakuTestApp.swift; sourceTree = "<group>"; };
 		EBC467722C06B38200355B28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		EBA13ED02C0B51010028AF29 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				EBBEA2882C0FED4B00E0F123 /* GT-Maru-Black.ttf */,
 				EBC467C42C07FD7900355B28 /* GTMaruBlack.ttf */,
 			);
 			name = fonts;
@@ -417,6 +420,7 @@
 				EBBA426C2C0C7B5A00AE78C9 /* secondTheme.json in Resources */,
 				EBC467782C06B38400355B28 /* Preview Assets.xcassets in Resources */,
 				EBBA42832C0D95E600AE78C9 /* deckSushi.png in Resources */,
+				EBBEA2892C0FED4B00E0F123 /* GT-Maru-Black.ttf in Resources */,
 				EBBA42612C0C22C100AE78C9 /* theme.json in Resources */,
 				EBC467752C06B38400355B28 /* Assets.xcassets in Resources */,
 				EBEF7D982C095DC0002B8E7F /* localData.json in Resources */,
