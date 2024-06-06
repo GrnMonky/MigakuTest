@@ -21,7 +21,7 @@ struct HomeView<Theme: HomeViewTheme>: View {
     @State private var showGithub = false
     var viewModel = HomeVM()
     
-    private var animation = Animation.interpolatingSpring(stiffness: 600 * 2, damping: 15 * 3)
+    private var animation = Animation.interpolatingSpring(stiffness: 600 * 1.5, damping: 15 * 3)
     
     @EnvironmentObject var theme: Theme
     

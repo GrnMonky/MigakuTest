@@ -78,7 +78,7 @@ struct MorphingShapeBottom: Shape {
             // Move to the starting point at the top-left corner
             path.move(to: CGPoint(x: width * flexSmallAdjustment + 5, y: (height * flexLargeAdjustment) - 1))
             // Draw line to the top-right point
-        path.addLine(to: CGPoint(x: width + ( width * flexSmallAdjustment), y: height * flexLargeAdjustment))
+        path.addLine(to: CGPoint(x: width + ( width * flexSmallAdjustment), y: height * flexLargeAdjustment - 0.2))
             // Draw line to the bottom-right point
             path.addLine(to: CGPoint(x: width, y: height))
             // Draw line to the bottom-left point
@@ -113,7 +113,7 @@ struct BigHomeBtn<Theme: BigHomeBtnTheme>: ButtonStyle {
     private var flexLargeAdjustmentLast: CGFloat = 1
     private var flexOffsetAdjustmentLast: CGFloat = 0.05
     
-    private var animation = Animation.easeInOut(duration: 0.3)
+    private var animation = Animation.easeIn(duration: 0.1)
     
     func makeBody(configuration: Configuration) -> some View {
         GeometryReader { geometry in
@@ -125,7 +125,7 @@ struct BigHomeBtn<Theme: BigHomeBtnTheme>: ButtonStyle {
                     flexOffsetAdjustment: flexOffsetAdjustment,
                     size: geometry.size
                 )
-                .stroke(theme.pathStrokeColor, lineWidth: 5)
+                .stroke(theme.pathStrokeColor, lineWidth: 3)
                 .fill(theme.pathFillColor)
             }
             .onChange(of: configuration.isPressed) {
@@ -143,7 +143,7 @@ struct BigHomeBtn<Theme: BigHomeBtnTheme>: ButtonStyle {
                     flexOffsetAdjustment: flexOffsetAdjustment,
                     size: geometry.size
                 )
-                .stroke(theme.pathStrokeColor, lineWidth: 5)
+                .stroke(theme.pathStrokeColor, lineWidth: 3)
                 .fill(theme.pathFillColor)
                 .offset(x: -1, y: 1)
             }
@@ -156,12 +156,12 @@ struct BigHomeBtn<Theme: BigHomeBtnTheme>: ButtonStyle {
             }
             
             Rectangle()
-                .stroke(theme.rectangleStrokeColor, lineWidth: 2)
+                .stroke(theme.rectangleStrokeColor, lineWidth: 1)
                 .background(Rectangle().fill(theme.rectangleFillColor))
                 .overlay(configuration.label)
-                .frame(width: geometry.size.width + 2, height: geometry.size.height * 0.98)
+                .frame(width: geometry.size.width, height: geometry.size.height * 0.98)
                             .offset(x: configuration.isPressed ? 0 : geometry.size.width * 0.05 - 2,
-                                    y: configuration.isPressed ? geometry.size.height * 0.05 - 5 : -3)
+                                    y: configuration.isPressed ? geometry.size.height * 0.05 - 5 : -2)
         }.animation(animation, value: configuration.isPressed)
     }
 }
