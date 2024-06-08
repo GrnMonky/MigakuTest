@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB04697B2C13E37D00844C75 /* GT-Maru-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB04697A2C13E37D00844C75 /* GT-Maru-Black.ttf */; };
 		EBBA42612C0C22C100AE78C9 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = EBBA42602C0C228400AE78C9 /* theme.json */; };
 		EBBA42652C0C237D00AE78C9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBA42642C0C237C00AE78C9 /* Theme.swift */; };
 		EBBA42672C0C25B400AE78C9 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBA42662C0C25B400AE78C9 /* ThemeProtocol.swift */; };
@@ -14,7 +15,6 @@
 		EBBA426C2C0C7B5A00AE78C9 /* secondTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = EBBA426B2C0C7B5A00AE78C9 /* secondTheme.json */; };
 		EBBA42702C0D508200AE78C9 /* localDataFigma.json in Resources */ = {isa = PBXBuildFile; fileRef = EBBA426F2C0D508200AE78C9 /* localDataFigma.json */; };
 		EBBA42722C0D54A100AE78C9 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBA42712C0D54A100AE78C9 /* CardModel.swift */; };
-		EBBEA2892C0FED4B00E0F123 /* GT-Maru-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBBEA2882C0FED4B00E0F123 /* GT-Maru-Black.ttf */; };
 		EBBEA28E2C109C3400E0F123 /* deckSushi.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBEA28A2C109C3400E0F123 /* deckSushi.png */; };
 		EBBEA28F2C109C3400E0F123 /* deckJapan.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBEA28B2C109C3400E0F123 /* deckJapan.png */; };
 		EBBEA2902C109C3400E0F123 /* deckKanji.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBEA28C2C109C3400E0F123 /* deckKanji.png */; };
@@ -61,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EB04697A2C13E37D00844C75 /* GT-Maru-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GT-Maru-Black.ttf"; sourceTree = "<group>"; };
 		EBBA42602C0C228400AE78C9 /* theme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = theme.json; sourceTree = "<group>"; };
 		EBBA42642C0C237C00AE78C9 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = MigakuTest/Utilities/Theme/Theme.swift; sourceTree = SOURCE_ROOT; };
 		EBBA42662C0C25B400AE78C9 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
@@ -69,7 +70,6 @@
 		EBBA426D2C0C7E0600AE78C9 /* ProtocolGenerator.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ProtocolGenerator.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EBBA426F2C0D508200AE78C9 /* localDataFigma.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = localDataFigma.json; sourceTree = "<group>"; };
 		EBBA42712C0D54A100AE78C9 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
-		EBBEA2882C0FED4B00E0F123 /* GT-Maru-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GT-Maru-Black.ttf"; path = "landon/DesignFiles/GT-Maru-Black.ttf"; sourceTree = SOURCE_ROOT; };
 		EBBEA28A2C109C3400E0F123 /* deckSushi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deckSushi.png; sourceTree = "<group>"; };
 		EBBEA28B2C109C3400E0F123 /* deckJapan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deckJapan.png; sourceTree = "<group>"; };
 		EBBEA28C2C109C3400E0F123 /* deckKanji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deckKanji.png; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		EBA13ED02C0B51010028AF29 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				EBBEA2882C0FED4B00E0F123 /* GT-Maru-Black.ttf */,
+				EB04697A2C13E37D00844C75 /* GT-Maru-Black.ttf */,
 				EBC467C42C07FD7900355B28 /* GTMaruBlack.ttf */,
 			);
 			name = fonts;
@@ -417,9 +417,9 @@
 				EBBA426C2C0C7B5A00AE78C9 /* secondTheme.json in Resources */,
 				EBC467782C06B38400355B28 /* Preview Assets.xcassets in Resources */,
 				EBBEA2902C109C3400E0F123 /* deckKanji.png in Resources */,
-				EBBEA2892C0FED4B00E0F123 /* GT-Maru-Black.ttf in Resources */,
 				EBBEA28E2C109C3400E0F123 /* deckSushi.png in Resources */,
 				EBBEA2912C109C3400E0F123 /* deckFlower.png in Resources */,
+				EB04697B2C13E37D00844C75 /* GT-Maru-Black.ttf in Resources */,
 				EBBA42612C0C22C100AE78C9 /* theme.json in Resources */,
 				EBC467752C06B38400355B28 /* Assets.xcassets in Resources */,
 				EBEF7D982C095DC0002B8E7F /* localData.json in Resources */,
